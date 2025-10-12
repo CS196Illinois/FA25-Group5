@@ -17,3 +17,5 @@ df = pd.read_csv("course-catalog.csv")
 
 # #view first few rows 
 print(df.head())
+
+print("Hello World ")
