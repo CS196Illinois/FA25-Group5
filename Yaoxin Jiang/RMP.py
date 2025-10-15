@@ -41,7 +41,7 @@ def getRMP(professor_full_name: str) -> float:
   return None
 
 # Example of how to use the function
-ranking = getRMP("Nathan Dunfield")
+print(getRMP("Dunfield, Nathan"))
 
 def getRMPfuzzy(professor_full_name: str) -> float:
   url = "https://www.ratemyprofessors.com/search/professors/1112?q=" + professor_full_name
@@ -78,4 +78,4 @@ def getRMPfuzzy(professor_full_name: str) -> float:
   return None
 
 # Example of how to use the function
-ranking = getRMPfuzzy("Nathan D")
+print(getRMPfuzzy("Nathan D"))
