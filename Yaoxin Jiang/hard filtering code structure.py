@@ -41,3 +41,6 @@ def hardFilter_dfs(courses, timespace, coursesCopy, endlist):# unfinished need t
 def hardFilter(inputTimespace, courses):
     #inputTimespace is the hard preference time constraint
     return hardFilter_dfs(courses, inputTimespace, courses, [])
+
+
+#need to consider NaN situations
