@@ -15,6 +15,8 @@ def timeToInt(timeString):
 
 def hardFilter_toTimespace(section): #unfinished, need to get data from dataset
     timespace[5][90] = 0
+    if startTime == "ARRANGED":
+        return timespace
     #return the timespace for the course in format of int[5][90]
     for i in range(timeToInt(startTime), timeToInt(endTime)):
         if week.contains('M'):
@@ -71,5 +73,3 @@ def hardFilter(inputTimespace, courses):
 
 
 #need to consider NaN situations
-
-print(timeToInt("8:30:00 am"))
