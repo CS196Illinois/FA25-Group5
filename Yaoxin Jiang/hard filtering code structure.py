@@ -70,5 +70,8 @@ def hardFilter(inputTimespace, courses):
 
 #test code
 inputTimespace = np.zeros((5, 90), dtype=int)
-courses = ["CHEM 103", "MATH 241", "TE 200", "LAS 100", "LAS 101"]
-print(hardFilter(inputTimespace, courses))
+#example timespace preference: free on all times
+courses = ["CHEM 103", "MATH 241", "LAS 101", "ECE 120", "ANTH 246"]
+#example classes
+for i in hardFilter(inputTimespace, courses):
+    print(i)
