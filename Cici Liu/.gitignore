@@ -1,0 +1,12 @@
+# Ignore datasets and large data files
+*.csv
+
+# Ignore Python's automatically generated cache folders
+__pycache__/
+
+# Ignore Python virtual environment folders
+venv/
+.venv/
+
+# Ignore editor-specific settings that shouldn't be shared
+.vscode/
