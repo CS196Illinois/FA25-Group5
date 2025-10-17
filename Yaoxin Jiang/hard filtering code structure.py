@@ -4,7 +4,7 @@
 import pandas as pd
 import numpy as np
 df = pd.read_csv(r'C:\Users\kenny\source\repos\FA25-Group5\Yaoxin Jiang\modified-2025-sp (with RMP).csv')
-
+#need to change directory to the location of the csv file
 
 def timeToInt(timeString):
     hours = int(timeString.split(':')[0])
