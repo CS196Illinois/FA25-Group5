@@ -1,0 +1,199 @@
+Code,Subject,Target_lower,variants
+AAS,Asian American Studies,asian american studies,"['latin amer & carib studies', 'latin american studies program', 'amer & carib       studies', 'english & american literature']"
+ABE,Agricultural and Biological Eng,agricultural and biological eng,"['agricultural & biological engineering', 'agricultural and biological engineering']"
+ACCY,Accountancy,accountancy,[]
+ACE,Agr & Consumer Economics,agr & consumer economics,"['agricultural & consumer economics', 'family and consumer economics', 'agricultural and consumer economics', 'agriculture & consumer economics']"
+ACES,"Agr, Consumer, & Env Sciences","agr, consumer, & env sciences","['agricultural, consumer & environmental sciences', 'agricultural, consumer, and environmental sciences', 'agricultural, consumer and environmental sciences']"
+ADV,Advertising,advertising,['leadership']
+AE,Aerospace Engineering,aerospace engineering,[]
+AFAS,Air Force Aerospace Studies,air force aerospace studies,[]
+AFRO,African American Studies,african american studies,[]
+AFST,African Studies,african studies,[]
+AGCM,Agricultural Communications,agricultural communications,['agricultural economics']
+AGED,Agricultural Education,agricultural education,[]
+AHS,Applied Health Sci Courses,applied health sci courses,"['applied health sciences', 'applied health science']"
+AIS,American Indian Studies,american indian studies,['english and american literature']
+ALEC,"Agricultural Leadership, Education, & Communications Program","agricultural leadership, education, & communications program",[]
+ANSC,Animal Sciences,animal sciences,['medical sciences']
+ANTH,Anthropology,anthropology,[]
+ARAB,Arabic,arabic,[]
+ARCH,Architecture,architecture,[]
+ART,Art,art,['art']
+ARTD,Art--Design,art--design,"['art & design', 'art and design']"
+ARTE,Art--Education,art--education,['art education']
+ARTF,Art--Foundation,art--foundation,[]
+ARTH,Art--History,art--history,[]
+ARTJ,Japanese Arts and Aesthetics,japanese arts and aesthetics,[]
+ARTS,Art--Studio,art--studio,[]
+ASRM,Actuarial Science & Risk Management,actuarial science & risk management,[]
+ASST,Asian Studies,asian studies,"['asian studies-general', 'eil and esl']"
+ASTR,Astronomy,astronomy,['agronomy']
+ATMS,Atmospheric Sciences,atmospheric sciences,[]
+BADM,Business Administration,business administration,"['business admin. courses:', 'rehabilitation services', 'administration, higher, & continuing education', 'masters of business administration']"
+BASQ,Basque,basque,['las']
+BCOG,Brain and Cognitive Science,brain and cognitive science,['brain and cognitive science']
+BCS,Bosnian-Croatian-Serbian,bosnian-croatian-serbian,[]
+BDI,Business Data & Innovation,business data & innovation,[]
+BIOC,Biochemistry,biochemistry,['forestry']
+BIOE,Bioengineering,bioengineering,"['agricultural engineering', 'chemical engineering', 'greek (modern)']"
+BIOL,Biology,biology,['physiology']
+BIOP,Biophysics,biophysics,[]
+BSE,Biomedical Sciences and Engineering,biomedical sciences and engineering,[]
+BTW,Business and Technical Writing,business and technical writing,['usiness and technical writing']
+BULG,Bulgarian,bulgarian,[]
+BUS,Business,business,[]
+CAS,Center for Advanced Study,center for advanced study,[]
+CATL,Catalan,catalan,"['tramel,r']"
+CB,Comparative Biosciences,comparative biosciences,[]
+CDB,Cell and Developmental Biology,cell and developmental biology,[]
+CEE,Civil and Environ Engineering,civil and environ engineering,"['civil & environmental engineering', 'civil and environmental engineering']"
+CHBE,Chemical and Biomolecular Engineering,chemical and biomolecular engineering,[]
+CHEM,Chemistry,chemistry,[]
+CHIN,Chinese,chinese,[]
+CHLH,Community Health,community health,['human & community development']
+CHP,Campus Honors Program,campus honors program,[]
+CIC,Committee on Inst Cooperation,committee on inst cooperation,[]
+CI,Curriculum and Instruction,curriculum and instruction,[]
+CLCV,Classical Civilization,classical civilization,[]
+CLE,Clinical Sciences and Engineering,clinical sciences and engineering,[]
+CMN,Communication,communication,['speech communication']
+CPSC,Crop Sciences,crop sciences,[]
+CS,Computer Science,computer science,"['consumer sciences', 'materials science']"
+CSE,Computational Science and Engineering,computational science and engineering,[]
+CW,Creative Writing,creative writing,['executive mba']
+CWL,Comparative & World Literature,comparative & world literature,[]
+CZCH,Czech,czech,[]
+DANC,Dance,dance,[]
+DTX,Human-Centered Design & Design Thinking,human-centered design & design thinking,[]
+EALC,East Asian Languages & Cultures,east asian languages & cultures,[]
+ECE,Electrical and Computer Engineering,electrical and computer engineering,['aeronautical & astronautical engineering']
+ECON,Economics,economics,['economic courses']
+EDPR,Educational Practice,educational practice,"['educational policy studies', 'human resource education']"
+EDUC,Education,education,[]
+EEB,"Evolution, Ecology, & Behavior","evolution, ecology, & behavior","['ecology, ethology and evolution', 'ecology, ethology, and evolution']"
+EIL,English as an Intl Language,english as an intl language,"['english as an international language', 'english as an international language and english as a second language']"
+ENG,Engineering,engineering,[]
+ENGL,English,english,[]
+ENSU,Environmental Sustainability,environmental sustainability,[]
+ENT,Entomology,entomology,[]
+ENVS,Environmental Studies,environmental studies,['environmental sciences']
+EPOL,"Ed Policy, Org & Ldership","ed policy, org & ldership",[]
+EPSY,Educational Psychology,educational psychology,[]
+ERAM,Education Research and Methods,education research and methods,[]
+ESE,"Earth, Society, & Environment","earth, society, & environment",[]
+ESL,English as a Second Language,english as a second language,"['and english as a second language', 'english as a second language']"
+ETMA,Engineering Technology & Management for Agricultural Systems,engineering technology & management for agricultural systems,[]
+EURO,European Union Studies,european union studies,[]
+EXP,Exploratory Studies,exploratory studies,[]
+FAA,Fine and Applied Arts,fine and applied arts,['fine and applied arts']
+FIN,Finance,finance,[]
+FLTE,Foreign Language Teacher Education,foreign language teacher education,[]
+FR,French,french,[]
+FSHN,Food Science & Human Nutrition,food science & human nutrition,['foods and nutrition']
+GC,Graduate College,graduate college,"['college of medicine', 'grand challenge learning']"
+GEOL,Geology,geology,['geography']
+GER,German,german,['mba']
+GGIS,Geography & Geographic Information Science,geography & geographic information science,[]
+GLBL,Global Studies,global studies,[]
+GMC,Germanic,germanic,[]
+GRK,Greek,greek,[]
+GRKM,Modern Greek,modern greek,[]
+GSD,Game Studies and Design,game studies and design,['game studies and design']
+GS,General Studies,general studies,"['cinema studies', 'nursing general']"
+GWS,Gender and Women's Studies,gender and women's studies,"[""women's studies"", ""gender and women's studies"", 'de leon alejandro,j', 'gender and women’s studies']"
+HDFS,Human Dev and Family Studies,human dev and family studies,"['human development & family studies', 'human resources & family studies', 'human development and family studies']"
+HEBR,"Hebrew, Modern and Classical","hebrew, modern and classical","['hebrew, modern and classical']"
+HIST,History,history,[]
+HK,Health and Kinesiology,health and kinesiology,"['interdisciplinary health sciences', 'health and kinesiology']"
+HNDI,Hindi,hindi,[]
+HORT,Horticulture,horticulture,[]
+HT,Health Technology,health technology,[]
+HUM,Humanities Courses,humanities courses,['humanities']
+IB,Integrative Biology,integrative biology,[]
+IE,Industrial Engineering,industrial engineering,"['mechanical & industrial engineering', 'industrial and enterprise systems engineering', 'industrial & enterprise systems engineering']"
+IHLT,I-Health,i-health,['i-health']
+INFO,Informatics,informatics,[]
+IS,Information Sciences,information sciences,"['library & information science', 'library and information science']"
+ITAL,Italian,italian,[]
+JAPN,Japanese,japanese,[]
+JOUR,Journalism,journalism,[]
+JS,Jewish Studies,jewish studies,"['leisure studies', 'religious studies']"
+KIN,Kinesiology,kinesiology,[]
+KOR,Korean,korean,[]
+LA,Landscape Architecture,landscape architecture,[]
+LAS,Liberal Arts and Sciences,liberal arts and sciences,"['liberal arts & sciences', 'liberal arts', 'liberal arts and sciences']"
+LAST,Latin American & Caribbean St,latin american & caribbean st,['latin american and caribbean studies']
+LAT,Latin,latin,['aviation']
+LAW,Law,law,['law']
+LCTL,Less Commonly Taught Languages,less commonly taught languages,[]
+LEAD,Organizational & Community Leadership,organizational & community leadership,"['educational organization and leadership', 'educational policy, organization and leadership', 'educational organization & leadership', 'educational policy, organizatization and leadership', 'education policy, organization and leadership', 'education policy, organization & leadership', 'educational policy, organization & leadership']"
+LER,Labor and Employment Relations,labor and employment relations,"['labor & industrial relations', 'labor and industrial relations']"
+LING,Linguistics,linguistics,[]
+LLS,Latina/Latino Studies,latina/latino studies,"['latino/latina studies program', 'latina/latino studies program']"
+MACS,Media and Cinema Studies,media and cinema studies,['media and cinema studies']
+MATH,Mathematics,mathematics,[]
+MBA,MBA Program,mba program,"['i-health program', 'mba program']"
+MCB,Molecular and Cell Biology,molecular and cell biology,"['cell & structural biology', 'molecular & cellular biology', 'molecular and cellular biology', 'molecular and cell biology']"
+MDIA,Media,media,[]
+MDVL,Medieval Studies,medieval studies,['medieval civ. studies prog.']
+ME,Mechanical Engineering,mechanical engineering,['mechanical science and engineering']
+MICR,Microbiology,microbiology,['animal biology']
+MILS,Military Science,military science,[]
+MIP,Moleculr & Integrative Physiology,moleculr & integrative physiology,[]
+MSE,Materials Science & Engineering,materials science & engineering,[]
+MUSC,Music Lessons and Ensembles,music lessons and ensembles,['music lessons and ensembles']
+MUSE,Museum Studies,museum studies,[]
+MUS,Music,music,[]
+NE,Neural Engineering,neural engineering,"['nursing--general', 'nuclear engineering', 'nursing-general', 'nursing—general']"
+NEUR,Neuroscience,neuroscience,['food science']
+NPRE,"Nuclear, Plasma, Radiological Engineering","nuclear, plasma, radiological engineering","['nuclear, plasma & rad. engr.', 'nuclear, plasma & rad. engineering']"
+NRES,Natural Resources & Environ Sc,natural resources & environ sc,"['natural resources & environmental sciences', 'natural resources & environmental science', 'human resource development', 'natural resources', 'natural resources and environmental sciences']"
+NS,Naval Science,naval science,[]
+NUTR,Nutritional Sciences,nutritional sciences,[]
+PATH,Pathobiology,pathobiology,['veterinary pathobiology']
+PBIO,Plant Biology,plant biology,[]
+PERS,Persian,persian,"['nursing', 'indonesian']"
+PHIL,Philosophy,philosophy,[]
+PHYS,Physics,physics,"['krzyzewski,c']"
+PLPA,Plant Pathology,plant pathology,[]
+POL,Polish,polish,[]
+PORT,Portuguese,portuguese,['spanish and portuguese']
+PSM,Professional Science Master,professional science master,"[""professional science master's program"", 'professional science master’s program']"
+PS,Political Science,political science,[]
+PSYC,Psychology,psychology,[]
+QUEC,Quechua,quechua,[]
+REES,"Russian, East European and Eurasian Studies","russian, east european and eurasian studies","['russian & east european center', 'russian,east european & eurasion center', 'russian, east european, & eurasian center']"
+REHB,Rehabilitation Counseling,rehabilitation counseling,[]
+REL,Religion,religion,[]
+RHET,Rhetoric and Composition,rhetoric and composition,['rhetoric and composition']
+RMLG,Romance Linguistics,romance linguistics,[]
+RST,"Recreation, Sport, and Tourism","recreation, sport, and tourism","['spanish, italian and portuguese', 'spanish, italian, and portuguese', 'recreation, sport and tourism', 'spanish, italian and portugues', 'polanco encarnacion,g']"
+RUSS,Russian,russian,[]
+SAME,South Asian & Middle Eastern,south asian & middle eastern,[]
+SBC,Strategic Brand Communication,strategic brand communication,[]
+SCAN,Scandinavian,scandinavian,['french and italian']
+SE,Systems Engineering and Design,systems engineering and design,['systems engineering']
+SHS,Speech and Hearing Science,speech and hearing science,['speech and hearing science']
+SLAV,Slavic,slavic,[]
+SLCL,Literatures Cultures Linguistics,literatures cultures linguistics,"['school of literatures, cultures and linguistics', 'school of literatures, cultures, and linguistics']"
+SNSK,Sanskrit,sanskrit,[]
+SOC,Sociology,sociology,['rural sociology']
+SOCW,Social Work,social work,[]
+SPAN,Spanish,spanish,[]
+SPED,Special Education,special education,['vocational & technical education']
+STAT,Statistics,statistics,[]
+SWAH,Swahili,swahili,[]
+TAM,Theoretical and Applied Mechanics,theoretical and applied mechanics,[]
+TE,Technology Entrepreneurship,technology entrepreneurship,"['technical entrepreneurship center', 'technology entrepreneur center']"
+THEA,Theatre,theatre,"['hebrew', 'rhetoric']"
+TMGT,Technology and Management,technology and management,['technical systems management']
+TRST,Translation Studies,translation studies,[]
+TURK,Turkish,turkish,[]
+UKR,Ukrainian,ukrainian,"['korczak,p               ta']"
+UP,Urban and Regional Planning,urban and regional planning,['urban and regional planning']
+VCM,Veterinary Clinical Medicine,veterinary clinical medicine,['veterinary medical science']
+VM,Veterinary Medicine Courses,veterinary medicine courses,"['ui college of medicine at uc', 'veterinary biosciences', 'ui college of medicine at u-c', 'veterinary medicine']"
+WGGP,Women and Gender in Global Perspectives,women and gender in global perspectives,['women and gender in global perspectives program']
+WLOF,Wolof,wolof,[]
+WRIT,Writing Studies,writing studies,[]
+YDSH,Yiddish,yiddish,[]

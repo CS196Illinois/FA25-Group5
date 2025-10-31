@@ -1,0 +1,200 @@
+Unnamed: 0,Code,variants
+0,AAS,['asian american studies']
+1,ABE,"['agricultural & biological engineering', 'agricultural and biological engineering', 'agricultural engineering', 'agricultural and biological eng']"
+2,ACCY,['accountancy']
+3,ACE,"['agricultural & consumer economics', 'family and consumer economics', 'agricultural and consumer economics', 'agriculture & consumer economics', 'agricultural economics', 'agr & consumer economics']"
+4,ACES,"['agricultural, consumer & environmental sciences', 'agricultural, consumer, and environmental sciences', 'agricultural, consumer and environmental sciences', 'consumer sciences', 'agr, consumer, & env sciences']"
+5,ADV,['advertising']
+6,AE,"['aerospace engineering', 'aeronautical & astronautical engineering']"
+7,AFAS,"['air force aerospace studies', 'aviation']"
+8,AFRO,"['afro-american studies', 'african american studies']"
+9,AFST,['african studies']
+10,AGCM,"['agricultural communications', 'agricultural mechanization']"
+11,AGED,['agricultural education']
+12,AHS,"['applied health sciences courses', 'applied health sciences', 'applied health science', 'applied health sci courses']"
+13,AIS,['american indian studies']
+14,ALEC,"['agricultural leadership, education, and communications', 'agricultural leadership, education, and communications program', 'agricultural leadership, education, & communications program']"
+15,ANSC,"['animal sciences', 'animal science', 'animal biology']"
+16,ANTH,['anthropology']
+17,ARAB,['arabic']
+18,ARCH,['architecture']
+19,ART,['art']
+20,ARTD,"['art & design', 'art and design', 'art--design']"
+21,ARTE,"['art education', 'art--education']"
+22,ARTF,['art--foundation']
+23,ARTH,['art--history']
+24,ARTJ,['japanese arts and aesthetics']
+25,ARTS,['art--studio']
+26,ASRM,"['actuarial science and risk management', 'actuarial science & risk management']"
+27,ASST,"['asian studies-general', 'asian studies']"
+28,ASTR,"['astronomy', 'agronomy']"
+29,ATMS,"['atmospheric sciences', 'atmospheric science']"
+30,BADM,"['business administration', 'business admin. courses:', 'administration, higher, & continuing education', 'masters of business administration']"
+31,BASQ,['basque']
+32,BCOG,['brain and cognitive science']
+33,BCS,['bosnian-croatian-serbian']
+34,BDI,"['business data and innovation', 'business data & innovation']"
+35,BIOC,['biochemistry']
+36,BIOE,"['bioengineering', 'civil engineering']"
+37,BIOL,['biology']
+38,BIOP,['biophysics']
+39,BSE,['biomedical sciences and engineering']
+40,BTW,"['business and technical writing', 'usiness and technical writing']"
+41,BULG,['bulgarian']
+42,BUS,['business']
+43,CAS,['center for advanced study']
+44,CATL,['catalan']
+45,CB,['comparative biosciences']
+46,CDB,['cell and developmental biology']
+47,CEE,"['civil & environmental engineering', 'civil and environmental engineering', 'civil and environ engineering']"
+48,CHBE,"['chemical and biomolecular engineering', 'chemical & biomolecular engineering', 'chemical engineering']"
+49,CHEM,['chemistry']
+50,CHIN,['chinese']
+51,CHLH,['community health']
+52,CHP,['campus honors program']
+53,CIC,['committee on inst cooperation']
+54,CI,"['curriculum & instruction', 'curriculum and instruction']"
+55,CLCV,['classical civilization']
+56,CLE,['clinical sciences and engineering']
+57,CMN,"['communications', 'communication', 'speech communication']"
+58,CPSC,"['crop sciences', 'crop science']"
+59,CS,['computer science']
+60,CSE,['computational science and engineering']
+61,CW,['creative writing']
+62,CWL,"['comparative literature', 'comparative & world literature', 'comparative and world literature']"
+63,CZCH,['czech']
+64,DANC,['dance']
+65,DTX,"['human-centered design and design thinking', 'human-centered design & design thinking']"
+66,EALC,"['east asian languages and culture', 'east asian languages and cultures', 'east asian languages & cultures']"
+67,ECE,['electrical and computer engineering']
+68,ECON,"['economics', 'economic courses']"
+69,EDPR,['educational practice']
+70,EDUC,['education']
+71,EEB,"['ecology, ethology and evolution', 'ecology, ethology, and evolution', 'evolution, ecology, & behavior']"
+72,EIL,"['eil and esl', 'english as an international language', 'english as an international language and english as a second language', 'english as an intl language']"
+73,ENG,['engineering']
+74,ENGL,"['english', 'english & american literature', 'english and american literature']"
+75,ENSU,['environmental sustainability']
+76,ENT,['entomology']
+77,ENVS,"['environmental studies', 'environmental sciences']"
+78,EPOL,"['educational policy studies', 'educational policy, organization and leadership', 'educational organization & leadership', 'educational policy, organizatization and leadership', 'education policy, organization and leadership', 'education policy, organization & leadership', 'educational policy, organization & leadership', 'ed policy, org & ldership']"
+79,EPSY,['educational psychology']
+80,ERAM,['education research and methods']
+81,ESE,"['earth, society, and environment', 'earth, society and environment', 'earth systems, environment, & society', 'earth, society, & environment']"
+82,ESL,"['and english as a second language', 'english as a second language']"
+83,ETMA,"['engineering technology and management for agricultural systems', 'technical systems management', 'engineering technology & management for agricultural systems']"
+84,EURO,['european union studies']
+85,EXP,['exploratory studies']
+86,FAA,['fine and applied arts']
+87,FIN,['finance']
+88,FLTE,['foreign language teacher education']
+89,FR,"['french', 'french and italian']"
+90,FSHN,"['food science & human nutrition', 'food science and human nutrition', 'foods and nutrition', 'food science']"
+91,GC,['graduate college']
+92,GEOL,['geology']
+93,GER,['german']
+94,GGIS,"['geography & geographic information science', 'geography & geographic information', 'geography and geographic information science', 'geography']"
+95,GLBL,['global studies']
+96,GMC,['germanic']
+97,GRK,['greek']
+98,GRKM,"['modern greek', 'greek (modern)']"
+99,GSD,['game studies and design']
+100,GS,['general studies']
+101,GWS,"[""gender & women's studies"", ""women's studies"", ""gender and women's studies"", 'gender and women’s studies']"
+102,HDFS,"['human & community development', 'human development & family studies', 'human resources & family studies', 'human development and family studies', 'human dev and family studies']"
+103,HEBR,"['hebrew, modern and classical', 'hebrew']"
+104,HIST,['history']
+105,HK,['health and kinesiology']
+106,HNDI,['hindi']
+107,HORT,"['horticulture', 'agriculture']"
+108,HT,['health technology']
+109,HUM,"['humanities courses', 'humanities']"
+110,IB,['integrative biology']
+111,IE,"['industrial engineering', 'industrial systems engineering', 'mechanical & industrial engineering', 'industrial and enterprise systems engineering', 'industrial & enterprise systems engineering']"
+112,IHLT,"['interdisciplinary health sciences', 'i-health', 'i-health program']"
+113,INFO,['informatics']
+114,IS,"['information science', 'information sciences', 'library & information science', 'library and information science']"
+115,ITAL,['italian']
+116,JAPN,['japanese']
+117,JOUR,['journalism']
+118,JS,['jewish studies']
+119,KIN,['kinesiology']
+120,KOR,['korean']
+121,LA,['landscape architecture']
+122,LAS,"['las', 'liberal arts & sciences', 'liberal arts', 'liberal arts and sciences']"
+123,LAST,"['latin american & caribbean studies', 'latin amererican & caribbean studies', 'latin american & caribean studies', 'latin amer & carib studies', 'latin american studies program', 'amer & carib       studies', 'latin american and caribbean studies', 'latin american & caribbean st']"
+124,LAT,['latin']
+125,LAW,['law']
+126,LCTL,['less commonly taught languages']
+127,LEAD,"['organizational and community leadership', 'leadership', 'educational organization and leadership', 'organizational & community leadership']"
+128,LER,"['labor & employment relations', 'labor employment relations', 'labor and employment relations', 'human resource education', 'labor & industrial relations', 'labor and industrial relations', 'human resource development']"
+129,LING,['linguistics']
+130,LLS,"['latino/latina studies', 'latina/latino studies', 'latino/latina studies program', 'latina/latino studies program']"
+131,MACS,"['cinema studies', 'media and cinema studies']"
+132,MATH,['mathematics']
+133,MBA,"['executive mba', 'mba', 'mba program']"
+134,MCB,"['cell & structural biology', 'molecular & cellular biology', 'molecular and cellular biology', 'molecular and cell biology']"
+135,MDIA,['media']
+136,MDVL,"['media studies', 'medieval studies', 'medieval civ. studies prog.']"
+137,ME,"['mechanical engineering', 'mechanical science and engineering']"
+138,MICR,['microbiology']
+139,MILS,"['military science', 'library science']"
+140,MIP,"['molecular & integrative physiology', 'molecular and integrative physiology', 'physiology', 'moleculr & integrative physiology']"
+141,MSE,"['materials science & engineering', 'materials science and engineering', 'materials science']"
+142,MUSC,['music lessons and ensembles']
+143,MUSE,['museum studies']
+144,MUS,['music']
+145,NE,"['general engineering', 'neural engineering']"
+146,NEUR,['neuroscience']
+147,NPRE,"['nuclear, plasma & radiological engineering', 'nuclear, plasma, & radiological engineering', 'nuclear, plasma & radiological engrineering', 'nuclear, plasma, and radiological engineering', 'nuclear engineering', 'nuclear, plasma & rad. engr.', 'nuclear, plasma & rad. engineering', 'nuclear, plasma, radiological engineering']"
+148,NRES,"['natural resources & environment', 'natural resources & environmental sciences', 'natural resources & environmental science', 'natural resources', 'natural resources and environmental sciences', 'natural resources & environ sc']"
+149,NS,['naval science']
+150,NUTR,['nutritional sciences']
+151,PATH,"['pathobiology', 'veterinary pathobiology']"
+152,PBIO,"['plant biology', 'forestry']"
+153,PERS,['persian']
+154,PHIL,['philosophy']
+155,PHYS,['physics']
+156,PLPA,['plant pathology']
+157,POL,['polish']
+158,PORT,['portuguese']
+159,PSM,"[""professional science master's program"", 'professional science master’s program', 'professional science master']"
+160,PS,['political science']
+161,PSYC,['psychology']
+162,QUEC,['quechua']
+163,REES,"['russian, eastern european and eurasian studies', 'russian, east european and eurasian studies', 'russian, east european, and eurasian studies', 'russian & east european center', 'russian,east european & eurasion center', 'russian, east european, & eurasian center']"
+164,REHB,"['rehabilitation counseling', 'rehabilitation services']"
+165,REL,"['religion', 'religious studies']"
+166,RHET,"['rhetoric and composition', 'rhetoric']"
+167,RMLG,['romance linguistics']
+168,RST,"['recreation, sport & tourism', 'recreation, sports, and tourism', 'recreation, sport, and tourism', 'leisure studies', 'recreation, sport and tourism']"
+169,RUSS,['russian']
+170,SAME,"['indonesian', 'south asian & middle eastern']"
+171,SBC,['strategic brand communication']
+172,SCAN,['scandinavian']
+173,SE,"['systems engineering and design', 'systems engineering']"
+174,SHS,['speech and hearing science']
+175,SLAV,['slavic']
+176,SLCL,"['literatures, cultures, and linguistics', 'school of literatures, cultures and linguistics', 'school of literatures, cultures, and linguistics', 'literatures cultures linguistics']"
+177,SNSK,['sanskrit']
+178,SOC,"['sociology', 'rural sociology']"
+179,SOCW,['social work']
+180,SPAN,"['spanish', 'spanish and portuguese', 'spanish, italian and portuguese', 'spanish, italian, and portuguese', 'spanish, italian and portugues']"
+181,SPED,['special education']
+182,STAT,['statistics']
+183,SWAH,['swahili']
+184,TAM,"['theoretical and applied mechanics', 'theoretical & applied mechanics']"
+185,TE,"['technical entrepreneurship', 'technology entrepreneurship', 'technical entrepreneurship center', 'technology entrepreneur center']"
+186,THEA,['theatre']
+187,TMGT,['technology and management']
+188,TRST,['translation studies']
+189,TURK,['turkish']
+190,UKR,['ukrainian']
+191,UP,"['urban & regional planning', 'urban and regional planning']"
+192,VCM,['veterinary clinical medicine']
+193,VM,"['veterinary medicine courses', 'veterinary medical science', 'veterinary biosciences', 'veterinary medicine']"
+194,WGGP,"['women and gender in global perspectives program', 'women and gender in global perspectives']"
+195,WLOF,['wolof']
+196,WRIT,['writing studies']
+197,YDSH,['yiddish']
+198,,[nan]
