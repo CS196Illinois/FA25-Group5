@@ -5,6 +5,7 @@ from numpy._core.numeric import nan
 import pandas as pd
 import numpy as np
 df = pd.read_csv(r'C:\Users\kenny\Desktop\CS 124 H\1101-modified+RMP-2025-sp.csv')
+sectionLimit = 10
 #need to change directory to the location of the csv file
 
 def timeToInt(timeString):
@@ -38,19 +39,30 @@ def hardFilter_addSectionDfs(courses, timespace, sectionIndexes, newSectionIndex
     else:
         return []
 
+def hardFilter_goThrough(courses, timespace, sectionIndexes, sectionList):
+    returnList = []
+    if len(sectionList) <= sectionLimit:
+        for tempIndex in sectionList:
+            returnList += hardFilter_addSectionDfs(courses, timespace, sectionIndexes, tempIndex)
+        return returnList
+    
+    listStep = len(sectionList) // sectionLimit
+
+    for i in range(sectionLimit):
+        returnList += hardFilter_addSectionDfs(courses, timespace, sectionIndexes, sectionList[listStep * i])
+
+    return returnList
+
 def hardFilter_ParseLinkedSection(currentLinkedSectionList, courses, timespace, sectionIndexes):
     if len(currentLinkedSectionList) == 0:
         return []
     if len(currentLinkedSectionList) == 1:
         return hardFilter_addSectionDfs(courses, timespace, sectionIndexes, currentLinkedSectionList[0])
 
-    returnList = []
-
     if (len(df.loc[currentLinkedSectionList[0], "Section"]) == 1) or (df.loc[currentLinkedSectionList[0], "Section"][1] in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]):
-         for tempIndex in currentLinkedSectionList:
-            returnList += hardFilter_addSectionDfs(courses, timespace, sectionIndexes, tempIndex)
-         return returnList
+        return hardFilter_goThrough(courses, timespace, sectionIndexes, currentLinkedSectionList)
     
+    returnList = []
     currentClassType = df.loc[currentLinkedSectionList[0], "Section"][1]
     currentClassTypeList = []
     currentIndex = 0
@@ -62,22 +74,27 @@ def hardFilter_ParseLinkedSection(currentLinkedSectionList, courses, timespace, 
             break
     
     if currentIndex < len(currentLinkedSectionList):
-        for tempIndex in currentClassTypeList:
-            newTimespace = timespace + hardFilter_toTimespace(tempIndex)
-            if not np.any(newTimespace > 1):
-                returnList += hardFilter_ParseLinkedSection(currentLinkedSectionList[currentIndex:], courses, newTimespace, sectionIndexes + [tempIndex])
+        if len(currentClassTypeList) <= sectionLimit:
+            for tempIndex in currentClassTypeList:
+                newTimespace = timespace + hardFilter_toTimespace(tempIndex)
+                if not np.any(newTimespace > 1):
+                    returnList += hardFilter_ParseLinkedSection(currentLinkedSectionList[currentIndex:], courses, newTimespace, sectionIndexes + [tempIndex])
+        else:
+            listStep = len(currentClassTypeList) // sectionLimit
+            for i in range(sectionLimit):
+                tempIndex = currentClassTypeList[listStep * i]
+                newTimespace = timespace + hardFilter_toTimespace(tempIndex)
+                if not np.any(newTimespace > 1):
+                    returnList += hardFilter_ParseLinkedSection(currentLinkedSectionList[currentIndex:], courses, newTimespace, sectionIndexes + [tempIndex])
     else:
-        for tempIndex in currentClassTypeList:
-            returnList += hardFilter_addSectionDfs(courses, timespace, sectionIndexes, tempIndex)
+        return hardFilter_goThrough(courses, timespace, sectionIndexes, currentClassTypeList)
     
     return returnList
 
 def hardFilter_parseSection(sectionListIndex, courses, timespace, sectionIndexes):
     returnList = []
     if (df.loc[sectionListIndex[0], "Section"] is nan):
-        for tempIndex in sectionListIndex:
-            returnList += hardFilter_addSectionDfs(courses, timespace, sectionIndexes, tempIndex)
-        return returnList
+        return hardFilter_goThrough(courses, timespace, sectionIndexes, sectionListIndex)
     currentLinkedSection = df.loc[sectionListIndex[0], "Section"][0]
     currentIndex = 0
     while (currentIndex < len(sectionListIndex)):
@@ -92,6 +109,7 @@ def hardFilter_parseSection(sectionListIndex, courses, timespace, sectionIndexes
 
         if currentIndex == len(sectionListIndex):
             break
+
         currentLinkedSection = df.loc[sectionListIndex[currentIndex], "Section"][0]
 
     return returnList
@@ -107,7 +125,7 @@ def hardFilter_printSchedule(sectionIndexes):
 def hardFilter_dfs(courses, timespace, sectionIndexes):# unfinished need to make sure endlist works well
     #return if all section has no conflict
     if len(courses) == 0:
-        #hardFilter_printSchedule(sectionIndexes)
+        hardFilter_printSchedule(sectionIndexes)
         return [sectionIndexes]
 
     endlist = []
@@ -163,6 +181,6 @@ def checkCode(result):
 
 inputTimespace = np.zeros((5, 90), dtype=int)
 #example timespace preference: free on all times
-courses = ["CHEM 103", "MATH 241", "ECE 120"]
+courses = ["CHEM 103", "MATH 241", "ECE 120", "ECE 110"]
 #example classes
-hardFilter(inputTimespace, courses, [])
+print(len(hardFilter(inputTimespace, courses, [])))
