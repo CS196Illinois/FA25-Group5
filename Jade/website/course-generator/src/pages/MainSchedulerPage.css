@@ -1,0 +1,303 @@
+.main-scheduler-page {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.main-scheduler-page h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.page-description {
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.scheduler-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.left-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.left-panel h2,
+.right-panel h2 {
+  margin: 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+  text-align: center;
+}
+
+/* Left Panel - Course Selection */
+.selected-summary {
+  background: #e8f5e9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #4CAF50;
+}
+
+.selected-summary h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #2e7d32;
+}
+
+.selected-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.selected-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 4px;
+}
+
+.section-count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.courses-results h3 {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0 0 1rem 0;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #999;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.courses-grouped {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.course-group {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-group-header {
+  padding: 1.5rem;
+  background: #f5f5f5;
+  border-bottom: 2px solid #eee;
+}
+
+.course-group-header h4 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.course-group-header p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.course-sections {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-section {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.course-section:hover {
+  background: #f9f9f9;
+}
+
+.course-section.selected {
+  background: #e3f2fd;
+  border-left: 4px solid #2196F3;
+}
+
+.course-section:last-child {
+  border-bottom: none;
+}
+
+.section-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.section-info span {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.section-crn {
+  font-weight: 600;
+  color: #333;
+}
+
+.section-type {
+  padding: 0.25rem 0.5rem;
+  background: #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.section-details {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.section-instructor {
+  color: #666;
+}
+
+.section-rmp {
+  padding: 0.25rem 0.5rem;
+  background: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Right Panel - Preferences */
+.right-panel {
+  position: sticky;
+  top: 2rem;
+}
+
+.generate-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.generate-btn {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.generate-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+}
+
+.generate-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.generate-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.generate-note {
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Scrollbar styling */
+.courses-grouped::-webkit-scrollbar {
+  width: 8px;
+}
+
+.courses-grouped::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.courses-grouped::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.courses-grouped::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media (max-width: 1200px) {
+  .scheduler-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .right-panel {
+    position: static;
+  }
+
+  .left-panel h2,
+  .right-panel h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-scheduler-page {
+    padding: 1rem;
+  }
+
+  .scheduler-layout {
+    gap: 1rem;
+  }
+
+  .section-info,
+  .section-details {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .generate-btn {
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+  }
+}
