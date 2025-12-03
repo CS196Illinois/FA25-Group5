@@ -6,7 +6,6 @@ import pandas as pd
 import numpy as np
 df = pd.read_csv(r'C:\Users\kenny\Desktop\CS 124 H\1101-modified+RMP-2025-sp.csv')
 sectionLimit = 10
-possibleList = [0, 2, 3, 5]
 #need to change directory to the location of the csv file
 
 def timeToInt(timeString):
@@ -26,17 +25,16 @@ def hardFilter_toTimespace(sectionIndex):
     #if there is no weekday, the start time will be arranged, no need to consider this situation
     #return the timespace for the course in format of int[5][90]
     dayMap = {'M': 0, 'T': 1, 'W': 2, 'R': 3, 'F': 4}
-    termMap = {'1': 5, 'A': 2, 'B': 3, '': 0, 'LF': 0}
     for i in range(timeToInt(df.loc[sectionIndex, 'Start Time']), timeToInt(df.loc[sectionIndex, 'End Time'])):
         for day in df.loc[sectionIndex, 'Days of Week']:
-            timespace[dayMap[day]][i] = termMap[df.loc[sectionIndex, 'Part of Term']]
+            timespace[dayMap[day]][i] = 1
     return timespace
 
 #deleted hardFilter_addTime and hardFilter_checkConflict methods, merged them into hardFilter_dfs method
 
 def hardFilter_addSectionDfs(courses, timespace, sectionIndexes, newSectionIndex):
     newTimespace = timespace + hardFilter_toTimespace(newSectionIndex)
-    if not np.any(newTimespace not in possibleList):
+    if not np.any(newTimespace > 1):
         return hardFilter_dfs(courses, newTimespace, sectionIndexes + [newSectionIndex])
     else:
         return []
@@ -79,14 +77,14 @@ def hardFilter_ParseLinkedSection(currentLinkedSectionList, courses, timespace, 
         if len(currentClassTypeList) <= sectionLimit:
             for tempIndex in currentClassTypeList:
                 newTimespace = timespace + hardFilter_toTimespace(tempIndex)
-                if not np.any(newTimespace not in possibleList):
+                if not np.any(newTimespace > 1):
                     returnList += hardFilter_ParseLinkedSection(currentLinkedSectionList[currentIndex:], courses, newTimespace, sectionIndexes + [tempIndex])
         else:
             listStep = len(currentClassTypeList) // sectionLimit
             for i in range(sectionLimit):
                 tempIndex = currentClassTypeList[listStep * i]
                 newTimespace = timespace + hardFilter_toTimespace(tempIndex)
-                if not np.any(newTimespace not in possibleList):
+                if not np.any(newTimespace > 1):
                     returnList += hardFilter_ParseLinkedSection(currentLinkedSectionList[currentIndex:], courses, newTimespace, sectionIndexes + [tempIndex])
     else:
         return hardFilter_goThrough(courses, timespace, sectionIndexes, currentClassTypeList)
