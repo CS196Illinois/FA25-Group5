@@ -4,3 +4,7 @@
 
 /datasets/*
 !datasets/.gitkeep
+
+# Environment variables - NEVER commit these!
+.env
+**/.env
