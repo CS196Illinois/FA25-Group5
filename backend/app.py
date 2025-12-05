@@ -7,7 +7,7 @@ from scheduler import generate_schedule
 app = Flask(__name__)
 CORS(app)
 '
-#just checking if server is working
+#just checking if the server is working
 @app.route('/ping')
 def ping():
     return "hello this server is working yeah"
@@ -64,7 +64,7 @@ def submit_preferences():
     hard_prefs = data.get("hard_prefernces, {}")
     soft_prefs = data.get("soft_preferences", {})
 
-    #validate those preferences here!!!!
+    #validate those preferences here!!!!1
 
     #process preferences here!!!!
 
@@ -73,4 +73,3 @@ def submit_preferences():
         "message": "preferences submitted successfully",
         "summary"
     }), 201 #201 is HTTP status code for "created"
-
