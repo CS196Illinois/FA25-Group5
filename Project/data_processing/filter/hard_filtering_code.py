@@ -1,11 +1,20 @@
 #timespace: int[5][90] = {0} -> 5 days, 90 time slots (7:00-22:00, 10 min each)
 #courses: [] -> integers representing the row of section
 #endlist: [[]] -> list of list for course sections
-from numpy._core.numeric import nan
+from numpy import nan
 import pandas as pd
 import numpy as np
-df = pd.read_csv(r'C:\Users\kenny\Desktop\CS 124 H\1101-modified+RMP-2025-sp.csv')
-sectionLimit = 10
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+print(script_dir)
+csv_path = os.path.join(script_dir, "../../datasets/11-7-2025-sp.csv")
+df = pd.read_csv(csv_path)
+#df = pd.read_csv("../datasets/11-7-2025-sp.csv")
+sectionLimit = 1000
+global totalCount
+totalCount = 0
+totalCountLimit = 30000
+possibleList = [0, 2, 3, 5]
 #need to change directory to the location of the csv file
 
 def timeToInt(timeString):
@@ -25,16 +34,17 @@ def hardFilter_toTimespace(sectionIndex):
     #if there is no weekday, the start time will be arranged, no need to consider this situation
     #return the timespace for the course in format of int[5][90]
     dayMap = {'M': 0, 'T': 1, 'W': 2, 'R': 3, 'F': 4}
+    termMap = {'1': 5, 'A': 2, 'B': 3, '': 0, 'LF': 0}
     for i in range(timeToInt(df.loc[sectionIndex, 'Start Time']), timeToInt(df.loc[sectionIndex, 'End Time'])):
         for day in df.loc[sectionIndex, 'Days of Week']:
-            timespace[dayMap[day]][i] = 1
+            timespace[dayMap[day]][i] = termMap[df.loc[sectionIndex, 'Part of Term']]
     return timespace
 
 #deleted hardFilter_addTime and hardFilter_checkConflict methods, merged them into hardFilter_dfs method
 
 def hardFilter_addSectionDfs(courses, timespace, sectionIndexes, newSectionIndex):
     newTimespace = timespace + hardFilter_toTimespace(newSectionIndex)
-    if not np.any(newTimespace > 1):
+    if np.isin(newTimespace, possibleList).all():
         return hardFilter_dfs(courses, newTimespace, sectionIndexes + [newSectionIndex])
     else:
         return []
@@ -77,14 +87,14 @@ def hardFilter_ParseLinkedSection(currentLinkedSectionList, courses, timespace, 
         if len(currentClassTypeList) <= sectionLimit:
             for tempIndex in currentClassTypeList:
                 newTimespace = timespace + hardFilter_toTimespace(tempIndex)
-                if not np.any(newTimespace > 1):
+                if np.isin(newTimespace, possibleList).all():
                     returnList += hardFilter_ParseLinkedSection(currentLinkedSectionList[currentIndex:], courses, newTimespace, sectionIndexes + [tempIndex])
         else:
             listStep = len(currentClassTypeList) // sectionLimit
             for i in range(sectionLimit):
                 tempIndex = currentClassTypeList[listStep * i]
                 newTimespace = timespace + hardFilter_toTimespace(tempIndex)
-                if not np.any(newTimespace > 1):
+                if np.isin(newTimespace, possibleList).all():
                     returnList += hardFilter_ParseLinkedSection(currentLinkedSectionList[currentIndex:], courses, newTimespace, sectionIndexes + [tempIndex])
     else:
         return hardFilter_goThrough(courses, timespace, sectionIndexes, currentClassTypeList)
@@ -125,6 +135,10 @@ def hardFilter_printSchedule(sectionIndexes):
 def hardFilter_dfs(courses, timespace, sectionIndexes):# unfinished need to make sure endlist works well
     #return if all section has no conflict
     if len(courses) == 0:
+        global totalCount
+        totalCount += 1
+        if (totalCount > totalCountLimit):
+            raise ValueError("The number of possible schedules is too big!")
         hardFilter_printSchedule(sectionIndexes)
         return [sectionIndexes]
 
@@ -160,7 +174,15 @@ def hardFilter(inputTimespace, courses, CRNs):
         if hardFilter_crnToIndex(crn) != -1:
             if not np.any(inputTimespace + hardFilter_toTimespace(hardFilter_crnToIndex(crn)) > 1):
                 inputTimespace += hardFilter_toTimespace(hardFilter_crnToIndex(crn))
-    return hardFilter_dfs(courses, inputTimespace, [])
+
+    ansList = []
+    try:
+        global totalCount
+        totalCount = 0
+        ansList = hardFilter_dfs(courses, inputTimespace, [])
+    except ValueError:
+        print("error")
+    return ansList
 
 #need to consider NaN situations
     #Actually we don't have to because for every course ther will definitely be a time range
@@ -179,8 +201,5 @@ def checkCode(result):
             print(addSpace(df.loc[i, 'Code'], 5) + " " + str(df.loc[i, 'Number']) + " " + addSpace(str(df.loc[i, 'Section']), 3), end = " | ")
         print()
 
-inputTimespace = np.zeros((5, 90), dtype=int)
-#example timespace preference: free on all times
-courses = ["CHEM 103", "MATH 241", "ECE 120", "ECE 110"]
-#example classes
-print(len(hardFilter(inputTimespace, courses, [])))
+
+#print(len(hardFilter(np.zeros((5, 90), dtype=int), ["CHEM 103", "MATH 241", "ECE 120", "ECE 110"], [])))
