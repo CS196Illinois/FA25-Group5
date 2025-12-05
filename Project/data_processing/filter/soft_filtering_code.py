@@ -9,6 +9,11 @@ print(script_dir)
 csv_path = os.path.join(script_dir, "../../datasets/11-7-2025-sp.csv")
 df = pd.read_csv(csv_path)
 
+#prof_score(indexList, weight_eo: Int (1-5) , weight_RMP: Int (1-5) )
+#class_score(indexList, weight_prof: Int (1-5), weight_class: Int (1-5), weight_percentage: Int (1-5), min_gpa: Str ('A'))
+#softbreak_score(indexList, timespace)
+
+
 #/////////////////////////////////////////////////////////////////////////////////////////////
 
 #/////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,7 +33,7 @@ def prof_RMP(index):
         return -1
     return df.loc[index, 'RMP'] * 20
 
-def prof_score(index, weight_eo, weight_RMP):
+def prof_score_index(index, weight_eo, weight_RMP):
     weight = 0
     total = 0
     if prof_eo(index) != -1:
@@ -40,6 +45,17 @@ def prof_score(index, weight_eo, weight_RMP):
     if total == 0:
         return -1
     return weight / total
+
+def prof_score(indexList, weight_eo, weight_RMP):
+    count = 0
+    sum = 0
+    for index in indexList:
+        if prof_score_index(index, weight_eo, weight_RMP) != -1:
+            count += 1
+            sum += prof_score_index(index, weight_eo, weight_RMP)
+    if count == 0:
+        return -1
+    return sum / count
 
 #/////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,21 +100,21 @@ def gpa_score(index, weight_prof, weight_class):
     else:
         return (avg_gpa_from_list(prof_grades) * weight_prof + avg_gpa_from_list(class_grades) * weight_class) / (weight_prof + weight_class)
 
-def percent_ge_from_list(grades, threshold):
+def percent_ge_from_list(grades, min_gpa):
     """Calculate percentage of students with GPA >= threshold."""
     grades = parse_grade_list(grades)
     total_students = grades[-1]
     grade_counts = grades[:-1]
-    above_count = sum(count for gpa, count in zip(gpa_map.values(), grade_counts) if gpa >= threshold)
+    above_count = sum(count for gpa, count in zip(gpa_map.values(), grade_counts) if gpa >= gpa_map[min_gpa])
     return (above_count / total_students) * 100 if total_students > 0 else -1
 
-def percent_ge(index, threshold):
+def percent_ge(index, min_gpa):
     if df.loc[index, 'Mean Grade By Professor (A+..F,W,Students)'] == nan and df.loc[index, 'Mean Grade By Class (A+..F,W,Students)'] == nan:
         return -1
     grades = df.loc[index, 'Mean Grade By Professor (A+..F,W,Students)'] if df.loc[index, 'Mean Grade By Professor (A+..F,W,Students)'] != nan else df.loc[index, 'Mean Grade By Class (A+..F,W,Students)']
-    return percent_ge_from_list(grades, threshold)
+    return percent_ge_from_list(grades, min_gpa)
 
-def class_score(index, weight_prof, weight_class, weight_percentage, min_gpa):
+def class_score_index(index, weight_prof, weight_class, weight_percentage, min_gpa):
     """Sum RMP sum + GPA score + %prof >= min_gpa1 + %class >= min_gpa2."""
     gpa_val = gpa_score(index, weight_prof, weight_class)
     percentage = percent_ge(index, min_gpa)
@@ -114,6 +130,17 @@ def class_score(index, weight_prof, weight_class, weight_percentage, min_gpa):
     if total == 0:
         return -1
     return weight / total
+
+def class_score(indexList, weight_prof, weight_class, weight_percentage, min_gpa):
+    count = 0
+    sum = 0
+    for index in indexList:
+        if class_score_index(index, weight_prof, weight_class, weight_percentage, min_gpa) != -1:
+            count += 1
+            sum += class_score_index(index, weight_prof, weight_class, weight_percentage, min_gpa)
+    if count == 0:
+        return -1
+    return sum / count
 
 #/////////////////////////////////////////////////////////////////////////////////////////////
 
