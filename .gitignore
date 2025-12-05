@@ -3,7 +3,10 @@
 /.vs
 
 /datasets/*
+/Project/datasets/*
 !datasets/.gitkeep
+!Project/datasets/.gitkeep
+
 
 # Environment variables - NEVER commit these!
 .env
