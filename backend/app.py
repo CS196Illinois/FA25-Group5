@@ -18,29 +18,20 @@ if __name__ == '__main__':
 
 #backend api endpoint for frontend to call
 
-#if receives generate request 
-@app.route('/generate', methods=['POST'])
-def generate():
-    data = request.get_json()
-
-    courses = data.get("courses", [])
-    prefs = data.get("preferences", {})
-
-    result = generate_schedule(courses, prefs)
-
-    return jsonify({"schedules": result})
 
 
 #get endpoint
-@app.route('/search-courses', methods=['GET'])
+@app.route('/search-courses/', methods=['GET'])
 def search_courses():
+
+    #here extract department name using spilt 
     course_name = request.args.get('name', '') #CS124
     department = request.args.get('department', '') #CS
-    keyword = request.args.get('keyword', '') #algorithms
+
 
     matching courses = [
         {
-            #this can be put in another file
+            #ALGO NEEDED
         }
     ]
 
@@ -52,24 +43,26 @@ def search_courses():
     }), 200 # 200 stands for OK
 
 
+    
 @app.route('/preferences', methods=['POST'])
-def submit_preferences():
+def generate():
     data = request.get_json()
+
     if not data:
         return jsonify({
             "success": False,
             "message": "no data can be provided"
         }), 400 #400 is for bad requests
 
-    hard_prefs = data.get("hard_prefernces, {}")
-    soft_prefs = data.get("soft_preferences", {})
-
-    #validate those preferences here!!!!1
-
-    #process preferences here!!!!
+    
+    course_list = data.get("course_list")
+    CRN_list = data.get("CRN_list")
+    hard_breaks = data.get("hard_breaks")
+    soft_preferences = data.get("soft_preferences")
+    
+    top_ten_schedules = generate_schedule(course_list, CRN_list, hard_breaks, soft_preferences)
 
     return jsonify({
         "success": True,
-        "message": "preferences submitted successfully",
-        "summary"
+        "schedules": top_ten_schedules
     }), 201 #201 is HTTP status code for "created"
