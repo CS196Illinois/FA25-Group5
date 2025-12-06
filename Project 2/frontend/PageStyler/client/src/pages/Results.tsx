@@ -53,198 +53,12 @@ function formatTime(timeString: string): string {
   return `${hours.toString().padStart(2, '0')}:${minutes}`;
 }
 
-// Mock data for demonstration (kept for fallback)
-const MOCK_SCHEDULES = [
-  {
-    id: "A",
-    matchPercentage: 98,
-    creditHours: 15,
-    courses: [
-      {
-        title: "CS 124: Intro to Computer Science I",
-        description: "Basic concepts in computing and fundamental techniques for solving computational problems.",
-        weekdays: ["Monday", "Wednesday", "Friday"],
-        time: "09:00-09:50",
-        courseData: {
-          course: "CS 124",
-          name: "Introduction to Computer Science I",
-          description: "Full description...",
-          credit: "3 hours",
-          degree: "Quant I",
-          CRN: 71578,
-          section: "AL1",
-          term: "1",
-          type: "Lecture",
-          start: "09:00:00 am",
-          end: "09:50:00 am",
-          days: "MWF",
-          building: "Siebel Center",
-          room: "1404",
-          location: "Siebel Center 1404",
-          instructors: "Challen, G"
-        }
-      },
-      {
-        title: "MATH 221: Calculus I",
-        description: "First course in calculus and analytic geometry.",
-        weekdays: ["Tuesday", "Thursday"],
-        time: "11:00-12:20",
-        courseData: {
-          course: "MATH 221",
-          name: "Calculus I",
-          description: "Calc I...",
-          credit: "4 hours",
-          degree: "Quant I",
-          CRN: 34123,
-          section: "BL2",
-          term: "1",
-          type: "Lecture",
-          start: "11:00:00 am",
-          end: "12:20:00 pm",
-          days: "TR",
-          building: "Altgeld Hall",
-          room: "314",
-          location: "Altgeld Hall 314",
-          instructors: "Smith, A"
-        }
-      },
-      {
-        title: "PHYS 211: University Physics: Mechanics",
-        description: "Newton's Laws, work and energy, static properties of fluids, oscillations, transverse waves, systems of particles.",
-        weekdays: ["Monday", "Wednesday"],
-        time: "13:00-14:50",
-        courseData: {
-          course: "PHYS 211",
-          name: "University Physics: Mechanics",
-          description: "Physics...",
-          credit: "4 hours",
-          degree: "Physical Sciences",
-          CRN: 56789,
-          section: "C3",
-          term: "1",
-          type: "Lab",
-          start: "01:00:00 pm",
-          end: "02:50:00 pm",
-          days: "MW",
-          building: "Loomis Lab",
-          room: "141",
-          location: "Loomis Lab 141",
-          instructors: "Doe, J"
-        }
-      },
-      {
-        title: "ECON 102: Microeconomic Principles",
-        description: "Introduction to the functions of individual decision-makers, both consumers and producers, within the larger economic system.",
-        weekdays: ["Monday", "Wednesday", "Friday"],
-        time: "15:00-15:50",
-        courseData: {
-          course: "ECON 102",
-          name: "Microeconomic Principles",
-          description: "Micro...",
-          credit: "3 hours",
-          degree: "Social Sciences",
-          CRN: 90123,
-          section: "D4",
-          term: "1",
-          type: "Lecture",
-          start: "03:00:00 pm",
-          end: "03:50:00 pm",
-          days: "MWF",
-          building: "David Kinley Hall",
-          room: "114",
-          location: "David Kinley Hall 114",
-          instructors: "Vasquez, M"
-        }
-      }
-    ]
-  },
-  {
-    id: "B",
-    matchPercentage: 94,
-    creditHours: 16,
-    courses: [
-      {
-        title: "CS 124: Intro to Computer Science I",
-        description: "Basic concepts in computing and fundamental techniques for solving computational problems.",
-        weekdays: ["Tuesday", "Thursday"],
-        time: "09:30-10:45",
-        courseData: {
-          course: "CS 124",
-          name: "Introduction to Computer Science I",
-          description: "Full description...",
-          credit: "3 hours",
-          degree: "Quant I",
-          CRN: 71579,
-          section: "AL2",
-          term: "1",
-          type: "Lecture",
-          start: "09:30:00 am",
-          end: "10:45:00 am",
-          days: "TR",
-          building: "Siebel Center",
-          room: "1404",
-          location: "Siebel Center 1404",
-          instructors: "Challen, G"
-        }
-      },
-      {
-        title: "MATH 221: Calculus I",
-        description: "First course in calculus and analytic geometry.",
-        weekdays: ["Monday", "Wednesday", "Friday"],
-        time: "10:00-10:50",
-        courseData: {
-          course: "MATH 221",
-          name: "Calculus I",
-          description: "Calc I...",
-          credit: "4 hours",
-          degree: "Quant I",
-          CRN: 34124,
-          section: "BL3",
-          term: "1",
-          type: "Lecture",
-          start: "10:00:00 am",
-          end: "10:50:00 am",
-          days: "MWF",
-          building: "Altgeld Hall",
-          room: "314",
-          location: "Altgeld Hall 314",
-          instructors: "Smith, A"
-        }
-      },
-      {
-        title: "CHEM 102: General Chemistry I",
-        description: "Fundamental principles of chemistry.",
-        weekdays: ["Monday", "Wednesday", "Friday"],
-        time: "12:00-12:50",
-        courseData: {
-          course: "CHEM 102",
-          name: "General Chemistry I",
-          description: "Chem...",
-          credit: "3 hours",
-          degree: "Physical Sciences",
-          CRN: 11223,
-          section: "E1",
-          term: "1",
-          type: "Lecture",
-          start: "12:00:00 pm",
-          end: "12:50:00 pm",
-          days: "MWF",
-          building: "Noyes Lab",
-          room: "100",
-          location: "Noyes Lab 100",
-          instructors: "Marville, K"
-        }
-      }
-    ]
-  }
-];
 
 export default function Results() {
   const { state } = useAppStore();
 
   // Transform backend schedules to match ScheduleVisualizer format
-  const displaySchedules = state.generatedSchedules.length > 0
-    ? state.generatedSchedules.map((schedule, index) => {
+  const displaySchedules = state.generatedSchedules.map((schedule, index) => {
         // Calculate total credit hours - only count each unique course once
         // (lectures and discussions for the same course share credit hours)
         const uniqueCourses = new Map<string, number>();
@@ -258,8 +72,8 @@ export default function Results() {
         });
         const creditHours = Array.from(uniqueCourses.values()).reduce((sum, credits) => sum + credits, 0);
 
-        // Calculate match percentage (normalize score to 0-100)
-        const matchPercentage = Math.min(100, Math.max(0, Math.round(schedule.score)));
+        // Use the raw score from backend
+        const matchPercentage = Math.round(schedule.score);
 
         // Debug first schedule
         if (index === 0) {
@@ -330,8 +144,7 @@ export default function Results() {
           creditHours,
           courses: transformedCourses
         };
-      })
-    : MOCK_SCHEDULES; // Fallback to mock data if no schedules generated
+      });
 
   return (
     <main className="container mx-auto px-4 py-8 animate-in slide-in-from-bottom-4 duration-500">
@@ -347,20 +160,26 @@ export default function Results() {
         <p className="text-muted-foreground mt-2">
           {state.generatedSchedules.length > 0
             ? `Found ${state.generatedSchedules.length} schedule${state.generatedSchedules.length > 1 ? 's' : ''} based on your preferences for professor quality, timing, and location.`
-            : "No schedules generated yet. Using sample data."}
+            : "No schedules generated yet. Please generate schedules from the planner."}
         </p>
       </div>
 
       <div className="space-y-8">
-        {displaySchedules.map((schedule) => (
-          <ScheduleVisualizer
-            key={schedule.id}
-            id={schedule.id}
-            matchPercentage={schedule.matchPercentage}
-            creditHours={schedule.creditHours}
-            courses={schedule.courses}
-          />
-        ))}
+        {displaySchedules.length > 0 ? (
+          displaySchedules.map((schedule) => (
+            <ScheduleVisualizer
+              key={schedule.id}
+              id={schedule.id}
+              matchPercentage={schedule.matchPercentage}
+              creditHours={schedule.creditHours}
+              courses={schedule.courses}
+            />
+          ))
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-lg text-muted-foreground">No schedules available. Please generate schedules from the planner first.</p>
+          </div>
+        )}
       </div>
     </main>
   );

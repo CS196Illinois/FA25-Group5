@@ -6,7 +6,7 @@ from scheduler import generate_schedule
 
 app = Flask(__name__)
 CORS(app)
-'
+
 #just checking if the server is working
 @app.route('/ping')
 def ping():

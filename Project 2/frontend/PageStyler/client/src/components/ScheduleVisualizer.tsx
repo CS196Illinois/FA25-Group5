@@ -81,7 +81,7 @@ export default function ScheduleVisualizer({ id, matchPercentage, creditHours, c
       <CardHeader className="bg-secondary/30 pb-4">
         <div className="flex justify-between items-start">
           <div className="flex gap-2">
-            <Badge className="bg-primary hover:bg-primary/90 text-white">Score: {matchPercentage}/100</Badge>
+            <Badge className="bg-primary hover:bg-primary/90 text-white">Score: {matchPercentage}</Badge>
             <Badge variant="outline" className="border-primary/20 text-primary">{creditHours} Credits</Badge>
           </div>
           <Button variant="outline" size="sm" className="h-8">Save</Button>

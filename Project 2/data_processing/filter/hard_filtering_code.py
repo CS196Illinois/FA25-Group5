@@ -22,7 +22,7 @@ def timeToInt(timeString):
     minutes = int(timeString.split(':')[1].split(' ')[0])
     amPm = timeString.split(' ')[1]
     timeInt = hours * 6 + minutes // 10
-    if (amPm == 'pm') & (hours != 12): #12:00 pm is 12:00, not 24:00 and there is no 12:00 am in the data
+    if (amPm == 'pm') and (hours != 12): #12:00 pm is 12:00, not 24:00 and there is no 12:00 am in the data
         timeInt += 72
     return timeInt - 42 #7:00 is the start time
 
@@ -110,7 +110,8 @@ def hardFilter_ParseLinkedSection(currentLinkedSectionList, courses, timespace, 
 
 def hardFilter_parseSection(sectionListIndex, courses, timespace, sectionIndexes):
     returnList = []
-    if (df.loc[sectionListIndex[0], "Section"] is nan):
+    section_value = df.loc[sectionListIndex[0], "Section"]
+    if pd.isna(section_value) or section_value == "" or section_value is None:
         return hardFilter_goThrough(courses, timespace, sectionIndexes, sectionListIndex)
     currentLinkedSection = df.loc[sectionListIndex[0], "Section"][0]
     currentIndex = 0
@@ -178,9 +179,11 @@ def hardFilter(inputTimespace, courses, CRNs):
     #inputTimespace is the hard preference time constraint
     #will skip invalid course names & CRNs
     for crn in CRNs:
-        if hardFilter_crnToIndex(crn) != -1:
-            if not np.any(inputTimespace + hardFilter_toTimespace(hardFilter_crnToIndex(crn)) > 1):
-                inputTimespace += hardFilter_toTimespace(hardFilter_crnToIndex(crn))
+        index = hardFilter_crnToIndex(crn)
+        if index != -1:
+            newTimespace = inputTimespace + hardFilter_toTimespace(index)
+            if hardFilter_checkConflict(newTimespace):
+                inputTimespace += hardFilter_toTimespace(index)
 
     ansList = []
     try:

@@ -122,13 +122,22 @@ def score_schedules(schedules, soft_prefs, soft_breaks):
 
         # Calculate final weighted score 
 
+        score = 0
+        total = 0
+        if prof_score != -1:
+            score += prof_score * soft_prefs[0]
+            total += soft_prefs[0]
+        if class_score != -1:
+            score += class_score * soft_prefs[3]
+            total += soft_prefs[3]
+        if softbreak_score != -1:
+            score += softbreak_score * soft_prefs[8]
+            total += soft_prefs[8]
         
-        final_score = (
-            prof_score * soft_prefs[0] +
-            class_score * soft_prefs[3] +
-            softbreak_score * soft_prefs[8]
-        )
-
+        if total == 0:
+            final_score = 0
+        else:
+            final_score = score / total
         #df.loc[section, '']
 
         returnSchedule = []

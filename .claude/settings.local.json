@@ -3,7 +3,20 @@
     "allow": [
       "Bash(py app.py)",
       "Bash(ping:*)",
-      "Bash(py -c:*)"
+      "Bash(py -c:*)",
+      "Bash(dir:*)",
+      "Bash(python app.py:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run dev:client:*)",
+      "Bash(set NODE_ENV=development)",
+      "Bash(npx tsx:*)",
+      "Bash(set PORT=3000)",
+      "Bash(npx cross-env:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(powershell -Command \"Stop-Process -Id 55892 -Force\")",
+      "Bash(set FLASK_RUN_PORT=8000)"
     ],
     "deny": [],
     "ask": []
