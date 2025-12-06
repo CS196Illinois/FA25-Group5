@@ -3,7 +3,8 @@
     "allow": [
       "Bash(py app.py)",
       "Bash(ping:*)",
-      "Bash(py -c:*)"
+      "Bash(py -c:*)",
+      "Bash(npm run dev:client:*)"
     ],
     "deny": [],
     "ask": []

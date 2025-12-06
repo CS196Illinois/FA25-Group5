@@ -136,7 +136,9 @@ def class_score_index(index, weight_prof, weight_class, weight_percentage, min_g
     total = 0
     weight_average = (weight_prof + weight_class) / 2.0
     if gpa_val != -1:
-        weight += weight_average * gpa_val
+        # Scale GPA from 0-4 to 0-100 to match percentage scale
+        gpa_scaled = (gpa_val / 4.0) * 100
+        weight += weight_average * gpa_scaled
         total += weight_average
     if percentage != -1:
         weight += weight_percentage * percentage

@@ -163,9 +163,9 @@ const TimeSlotSelector: React.FC<TimeSlotSelectorProps> = ({ onChange }) => {
         </div>
 
         {/* Grid */}
-        <div className="border rounded-md overflow-hidden bg-background shadow-inner h-[400px] overflow-y-auto relative">
+        <div className="border rounded-md bg-background shadow-inner max-h-[500px] overflow-y-scroll overflow-x-auto relative">
           <div className="grid grid-cols-[60px_repeat(5,1fr)] min-w-[500px]">
-            
+
             {/* Header */}
             <div className="sticky top-0 z-20 bg-muted border-b flex items-center justify-center h-8 text-xs font-bold text-muted-foreground">
               Time
