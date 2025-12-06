@@ -30,10 +30,27 @@ function parseDaysToArray(days: string): string[] {
 
 // Helper function to format time
 function formatTime(timeString: string): string {
-  // Convert "09:30 AM" or "09:30:00 AM" to "09:30"
-  // Extract just the HH:MM portion
-  const match = timeString.match(/(\d{1,2}:\d{2})/);
-  return match ? match[1] : timeString;
+  // Convert "09:30 AM" or "09:30:00 AM" or "12:00 PM" to 24-hour "09:30" or "12:00"
+  const match = timeString.match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)/i);
+  if (!match) {
+    // If no AM/PM found, just extract HH:MM
+    const simpleMatch = timeString.match(/(\d{1,2}:\d{2})/);
+    return simpleMatch ? simpleMatch[1] : timeString;
+  }
+
+  let hours = parseInt(match[1]);
+  const minutes = match[2];
+  const period = match[3].toUpperCase();
+
+  // Convert to 24-hour format
+  if (period === 'PM' && hours !== 12) {
+    hours += 12;
+  } else if (period === 'AM' && hours === 12) {
+    hours = 0;
+  }
+
+  // Format as HH:MM
+  return `${hours.toString().padStart(2, '0')}:${minutes}`;
 }
 
 // Mock data for demonstration (kept for fallback)
@@ -228,11 +245,18 @@ export default function Results() {
   // Transform backend schedules to match ScheduleVisualizer format
   const displaySchedules = state.generatedSchedules.length > 0
     ? state.generatedSchedules.map((schedule, index) => {
-        // Calculate total credit hours
-        const creditHours = schedule.schedule.reduce((total, section) => {
-          const creditMatch = section.credit.match(/(\d+)/);
-          return total + (creditMatch ? parseInt(creditMatch[1]) : 0);
-        }, 0);
+        // Calculate total credit hours - only count each unique course once
+        // (lectures and discussions for the same course share credit hours)
+        const uniqueCourses = new Map<string, number>();
+        schedule.schedule.forEach(section => {
+          const courseCode = section.course; // e.g., "CS 128" or "MATH 314"
+          if (!uniqueCourses.has(courseCode)) {
+            const creditMatch = section.credit.match(/(\d+)/);
+            const credits = creditMatch ? parseInt(creditMatch[1]) : 0;
+            uniqueCourses.set(courseCode, credits);
+          }
+        });
+        const creditHours = Array.from(uniqueCourses.values()).reduce((sum, credits) => sum + credits, 0);
 
         // Calculate match percentage (normalize score to 0-100)
         const matchPercentage = Math.min(100, Math.max(0, Math.round(schedule.score)));

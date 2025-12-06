@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py app.py)",
+      "Bash(ping:*)",
+      "Bash(py -c:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
