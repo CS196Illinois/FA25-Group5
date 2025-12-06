@@ -112,15 +112,32 @@ def score_schedules(schedules, soft_prefs, soft_breaks):
     scored = []
 
     for schedule in schedules:
-        # NEED UPDATES HERE 
+        # NEED UPDATES HERE
         prof_score = sf.prof_score(schedule, soft_prefs[1], soft_prefs[2])
         class_score = sf.class_score(schedule, soft_prefs[4], soft_prefs[5], soft_prefs[6], soft_prefs[7])
         softbreak_score = sf.softbreak_score(schedule, soft_breaks)
         # location_score = calculate_location_score(schedule, soft_prefs)
 
-        #weights from soft preferences 
+        # Normalize scores to 0-100 scale
+        # prof_score: 0-100 (from prof_eo and prof_RMP, both scaled to 0-100)
+        # class_score: returns weighted avg of GPA score (0-4) and percentage (0-100)
+        #              The GPA portion needs to be scaled to 0-100
+        # softbreak_score: 0-1 (convert to 0-100)
 
-        # Calculate final weighted score 
+        normalized_prof = prof_score if prof_score != -1 else 50  # Use 50 as neutral score if no data
+
+        # For class_score, the issue is it mixes GPA (0-4) with percentage (0-100)
+        # Looking at class_score_index: it weights gpa_score and percentage
+        # The gpa_score is 0-4, so we need to scale it. But class_score already does weighted avg.
+        # Since class_score returns a mix, we need to estimate the scale.
+        # If weight_prof and weight_class are used for GPA (0-4) and weight_percentage for % (0-100),
+        # the result will be skewed toward percentage. Let's scale assuming max is around 100.
+        normalized_class = class_score if class_score != -1 else 50
+
+        normalized_softbreak = softbreak_score * 100  # Convert 0-1 to 0-100
+
+        # Calculate final weighted score with normalized values
+        total_weight = soft_prefs[0] + soft_prefs[3] + soft_prefs[8]
 
         score = 0
         total = 0
@@ -142,6 +159,10 @@ def score_schedules(schedules, soft_prefs, soft_breaks):
 
         returnSchedule = []
         for section in schedule:
+            # Handle NaN values properly for days
+            days_value = df.loc[section, 'Days of Week']
+            days_str = "" if pd.isna(days_value) else str(days_value)
+
             returnSchedule.append({
                 "course": str(df.loc[section, 'Code']) + " " + str(df.loc[section, 'Number']),
                 "name": str(df.loc[section, 'Name']),
@@ -154,7 +175,7 @@ def score_schedules(schedules, soft_prefs, soft_breaks):
                 "type": str(df.loc[section, 'Type']),
                 "start": str(df.loc[section, 'Start Time']),
                 "end": str(df.loc[section, 'End Time']),
-                "days": str(df.loc[section, 'Days of Week']),
+                "days": days_str,
                 "location": (str(df.loc[section, 'Building']) + " " + str(df.loc[section, 'Room'])).strip(),
                 "instructors": str(df.loc[section, 'Instructors'])
             })

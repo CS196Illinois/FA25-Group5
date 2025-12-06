@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Schedule } from './api';
 
 interface SchedulePreferences {
@@ -48,6 +48,7 @@ interface AppContextType {
   ) => void;
   setGeneratedSchedules: (schedules: Schedule[]) => void;
   resetState: () => void;
+  saveState: () => void;
 }
 
 const defaultPreferences: SchedulePreferences = {
@@ -79,8 +80,36 @@ const defaultState: AppState = {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'schedule-planner-state';
+
+// Helper to load state from localStorage
+const loadStateFromStorage = (): AppState | null => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      return JSON.parse(stored);
+    }
+  } catch (error) {
+    console.error('Failed to load state from localStorage:', error);
+  }
+  return null;
+};
+
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<AppState>(defaultState);
+  const [state, setState] = useState<AppState>(() => {
+    // Initialize from localStorage if available
+    const stored = loadStateFromStorage();
+    return stored || defaultState;
+  });
+
+  // Save state to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (error) {
+      console.error('Failed to save state to localStorage:', error);
+    }
+  }, [state]);
 
   const addCourse = (course: string) => {
     setState((prev) => ({
@@ -139,6 +168,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const resetState = () => {
     setState(defaultState);
+    localStorage.removeItem(STORAGE_KEY);
+  };
+
+  const saveState = () => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (error) {
+      console.error('Failed to save state to localStorage:', error);
+    }
   };
 
   return (
@@ -153,6 +191,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         updatePreference,
         setGeneratedSchedules,
         resetState,
+        saveState,
       }}
     >
       {children}

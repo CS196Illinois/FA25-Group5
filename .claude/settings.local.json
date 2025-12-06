@@ -17,6 +17,7 @@
       "Bash(taskkill:*)",
       "Bash(powershell -Command \"Stop-Process -Id 55892 -Force\")",
       "Bash(set FLASK_RUN_PORT=8000)"
+      "Bash(npm run dev:client:*)"
     ],
     "deny": [],
     "ask": []
