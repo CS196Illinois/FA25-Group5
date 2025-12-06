@@ -60,6 +60,22 @@ export default function ScheduleVisualizer({ id, matchPercentage, creditHours, c
     return timeToMinutes(end) - timeToMinutes(start);
   };
 
+  // Create a mapping of course codes to color indices
+  // This ensures all sections of the same course get the same color
+  const courseColorMap = React.useMemo(() => {
+    const uniqueCourses = new Set<string>();
+    courses.forEach(course => {
+      if (course.courseData?.course) {
+        uniqueCourses.add(course.courseData.course);
+      }
+    });
+    const colorMap = new Map<string, number>();
+    Array.from(uniqueCourses).forEach((courseCode, index) => {
+      colorMap.set(courseCode, index);
+    });
+    return colorMap;
+  }, [courses]);
+
   return (
     <Card className="hover:shadow-xl transition-shadow duration-300 border-primary/10 overflow-hidden">
       <CardHeader className="bg-secondary/30 pb-4">
@@ -110,7 +126,7 @@ export default function ScheduleVisualizer({ id, matchPercentage, creditHours, c
 
                   {/* Course Blocks */}
                   <div className="absolute inset-0 grid grid-cols-5">
-                    {WEEKDAYS.map((day, dayIndex) => (
+                    {WEEKDAYS.map((day) => (
                       <div key={day} className="relative border-l border-border/30 first:border-l-0" style={{ minHeight: '900px' }}>
                         {courses.map((course, courseIndex) => {
                           // Debug: Check if course has valid days
@@ -131,10 +147,14 @@ export default function ScheduleVisualizer({ id, matchPercentage, creditHours, c
                             const totalDayMinutes = 15 * 60; // 7am to 10pm
                             const crn = course.courseData?.CRN || courseIndex;
 
+                            // Get color index based on course code, not section index
+                            const courseCode = course.courseData?.course || course.title.split(":")[0];
+                            const colorIndex = courseColorMap.get(courseCode) ?? courseIndex;
+
                             return (
                               <div
                                 key={`${crn}-${day}`}
-                                className={`absolute left-0.5 right-0.5 rounded px-1 py-0.5 text-[10px] leading-tight border-l-2 shadow-sm cursor-pointer transition-all hover:z-10 hover:shadow-md ${COLORS[courseIndex % COLORS.length]}`}
+                                className={`absolute left-0.5 right-0.5 rounded px-1 py-0.5 text-[10px] leading-tight border-l-2 shadow-sm cursor-pointer transition-all hover:z-10 hover:shadow-md ${COLORS[colorIndex % COLORS.length]}`}
                                 style={{
                                   top: `${(startMinutes / totalDayMinutes) * 100}%`,
                                   height: `${Math.max((duration / totalDayMinutes) * 100, 3)}%`,
