@@ -133,6 +133,10 @@ def score_schedules(schedules, soft_prefs, soft_breaks):
 
         returnSchedule = []
         for section in schedule:
+            # Handle NaN values properly for days
+            days_value = df.loc[section, 'Days of Week']
+            days_str = "" if pd.isna(days_value) else str(days_value)
+
             returnSchedule.append({
                 "course": str(df.loc[section, 'Code']) + " " + str(df.loc[section, 'Number']),
                 "name": str(df.loc[section, 'Name']),
@@ -145,7 +149,7 @@ def score_schedules(schedules, soft_prefs, soft_breaks):
                 "type": str(df.loc[section, 'Type']),
                 "start": str(df.loc[section, 'Start Time']),
                 "end": str(df.loc[section, 'End Time']),
-                "days": str(df.loc[section, 'Days of Week']),
+                "days": days_str,
                 "location": (str(df.loc[section, 'Building']) + " " + str(df.loc[section, 'Room'])).strip(),
                 "instructors": str(df.loc[section, 'Instructors'])
             })

@@ -250,17 +250,19 @@ export default function Results() {
           }
         }
 
-        const transformedCourses = schedule.schedule.map(section => {
+        const transformedCourses = schedule.schedule.map((section, sectionIdx) => {
           const weekdays = parseDaysToArray(section.days);
           const time = `${formatTime(section.start)}-${formatTime(section.end)}`;
 
           if (index === 0) {
-            console.log(`DEBUG: Section ${section.section}:`, {
-              course: section.course,
-              type: section.type,
-              days: section.days,
-              weekdays,
-              time,
+            console.log(`DEBUG: Section ${sectionIdx} - ${section.course} ${section.section}:`, {
+              rawDays: section.days,
+              daysType: typeof section.days,
+              daysValue: JSON.stringify(section.days),
+              parsedWeekdays: weekdays,
+              rawStart: section.start,
+              rawEnd: section.end,
+              formattedTime: time,
               hasValidDays: weekdays && weekdays.length > 0,
               hasValidTime: time && time.includes('-')
             });
