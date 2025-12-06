@@ -361,6 +361,7 @@ export default function Results() {
             matchPercentage={schedule.matchPercentage}
             creditHours={schedule.creditHours}
             courses={schedule.courses}
+            timeBreaks={state.timeBreaks}
           />
         ))}
       </div>

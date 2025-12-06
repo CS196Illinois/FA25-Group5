@@ -35,6 +35,7 @@ interface ScheduleOptionProps {
   matchPercentage: number;
   creditHours: number;
   courses: Course[];
+  timeBreaks?: number[][];
 }
 
 const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -47,7 +48,7 @@ const COLORS = [
   "bg-cyan-100 border-cyan-500 text-cyan-700 hover:bg-cyan-200",
 ];
 
-export default function ScheduleVisualizer({ id, matchPercentage, creditHours, courses }: ScheduleOptionProps) {
+export default function ScheduleVisualizer({ id, matchPercentage, creditHours, courses, timeBreaks }: ScheduleOptionProps) {
   // Helper to convert time string "HH:MM" to minutes from start of day (7:00 AM)
   const timeToMinutes = (timeStr: string) => {
     const [hours, minutes] = timeStr.split(":").map(Number);
@@ -75,6 +76,52 @@ export default function ScheduleVisualizer({ id, matchPercentage, creditHours, c
     });
     return colorMap;
   }, [courses]);
+
+  // Convert time breaks to displayable segments
+  // timeBreaks is 5 days x 90 slots (7am-10pm in 10-min intervals)
+  // Value 2 = hard break
+  const hardBreakSegments = React.useMemo(() => {
+    if (!timeBreaks || timeBreaks.length !== 5) return [];
+
+    const segments: { day: number; startSlot: number; endSlot: number }[] = [];
+
+    for (let dayIndex = 0; dayIndex < 5; dayIndex++) {
+      const daySlots = timeBreaks[dayIndex];
+      if (!daySlots || daySlots.length !== 90) continue;
+
+      let segmentStart: number | null = null;
+
+      for (let slot = 0; slot < 90; slot++) {
+        if (daySlots[slot] === 2) {
+          // Hard break
+          if (segmentStart === null) {
+            segmentStart = slot;
+          }
+        } else {
+          // Not a hard break
+          if (segmentStart !== null) {
+            segments.push({
+              day: dayIndex,
+              startSlot: segmentStart,
+              endSlot: slot,
+            });
+            segmentStart = null;
+          }
+        }
+      }
+
+      // Close any open segment at end of day
+      if (segmentStart !== null) {
+        segments.push({
+          day: dayIndex,
+          startSlot: segmentStart,
+          endSlot: 90,
+        });
+      }
+    }
+
+    return segments;
+  }, [timeBreaks]);
 
   return (
     <Card className="hover:shadow-xl transition-shadow duration-300 border-primary/10 overflow-hidden">
@@ -123,6 +170,35 @@ export default function ScheduleVisualizer({ id, matchPercentage, creditHours, c
                   {Array.from({ length: 16 }).map((_, i) => (
                     <div key={i} className="absolute w-full border-b border-dashed border-border/30" style={{ top: `${(i / 16) * 100}%` }} />
                   ))}
+
+                  {/* Hard Break Blocks (rendered behind courses) */}
+                  <div className="absolute inset-0 grid grid-cols-5">
+                    {WEEKDAYS.map((day, dayIndex) => (
+                      <div key={`breaks-${day}`} className="relative border-l border-border/30 first:border-l-0" style={{ minHeight: '900px' }}>
+                        {hardBreakSegments
+                          .filter(segment => segment.day === dayIndex)
+                          .map((segment, segmentIndex) => {
+                            // Convert slot indices to time (each slot is 10 minutes)
+                            const startMinutes = segment.startSlot * 10; // Minutes from 7:00 AM
+                            const endMinutes = segment.endSlot * 10;
+                            const duration = endMinutes - startMinutes;
+                            const totalDayMinutes = 15 * 60; // 7am to 10pm (15 hours)
+
+                            return (
+                              <div
+                                key={`segment-${segmentIndex}`}
+                                className="absolute left-0 right-0 bg-gray-300/40 border-l-2 border-gray-500"
+                                style={{
+                                  top: `${(startMinutes / totalDayMinutes) * 100}%`,
+                                  height: `${(duration / totalDayMinutes) * 100}%`,
+                                }}
+                                title="Hard Break"
+                              />
+                            );
+                          })}
+                      </div>
+                    ))}
+                  </div>
 
                   {/* Course Blocks */}
                   <div className="absolute inset-0 grid grid-cols-5">
