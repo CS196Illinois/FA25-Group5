@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Plus, Check, Loader2 } from "lucide-react";
+import { Search, Plus, Check, Loader2, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
@@ -105,8 +105,22 @@ const CourseSearch = () => {
             </Label>
             <div className="flex flex-wrap gap-1">
               {state.selectedCourses.map((course) => (
-                <Badge key={course} variant="default" className="text-xs">
-                  {course}
+                <Badge
+                  key={course}
+                  variant="default"
+                  className="text-xs pr-1 gap-1 cursor-pointer hover:bg-primary/80 transition-colors"
+                >
+                  <span>{course}</span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeCourse(course);
+                    }}
+                    className="ml-1 hover:bg-primary-foreground/20 rounded-full p-0.5 transition-colors"
+                    aria-label={`Remove ${course}`}
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
                 </Badge>
               ))}
             </div>

@@ -176,7 +176,7 @@ const CategoryCard = ({ category, values, onValueChange, onTimeBreaksChange }: C
                 max={mainSlider.max || 10}
                 min={mainSlider.min || 0}
                 step={1}
-                className="w-full [&>span:first-child]:h-4 [&>span:first-child]:bg-blue-100 dark:[&>span:first-child]:bg-blue-900/30 [&>span:first-child_span]:bg-blue-600 [&>span:last-child]:h-8 [&>span:last-child]:w-8 [&>span:last-child]:border-blue-600 [&>span:last-child]:bg-white [&>span:last-child]:border-4 [&>span:last-child]:shadow-lg hover:[&>span:last-child]:scale-110 transition-all"
+                className="w-full [&>span:first-child]:h-4 [&>span:first-child]:bg-blue-100 dark:[&>span:first-child]:bg-blue-900/30 [&>span:first-child_span]:bg-blue-600 [&_span[role=slider]]:h-8 [&_span[role=slider]]:w-8 [&_span[role=slider]]:border-blue-600 [&_span[role=slider]]:bg-white [&_span[role=slider]]:border-4 [&_span[role=slider]]:shadow-lg [&_span[role=slider]]:rounded-sm hover:[&_span[role=slider]]:scale-110 transition-all"
               />
             </div>
           )}
